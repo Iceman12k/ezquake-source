@@ -29,7 +29,6 @@ typedef intptr_t stringptr_t;
 
 typedef enum {ev_void, ev_string, ev_float, ev_vector, ev_entity, ev_field, ev_function, ev_pointer} etype_t;
 
-
 #define	OFS_NULL		0
 #define	OFS_RETURN		1
 #define	OFS_PARM0		4		// leave 3 ofs for each parm to hold vectors

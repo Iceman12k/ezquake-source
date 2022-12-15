@@ -1981,14 +1981,16 @@ void ReloadPaletteAndColormap(void)
 	FMod_CheckModel("gfx/colormap.lmp", host_colormap, filesize);
 }
 
+extern void QCLIB_Init(void);
 void EX_FileList_Init(void);
-
 void CL_Init (void) 
 {
 	// When ezquake was launched via a webpage (qtv) the working directory wasn't properly
 	// set. Changing the directory makes sure it starts out in the directory where ezquake 
 	// is located.
 	Sys_chdir(com_basedir);
+
+	QCLIB_Init();
 
 	cls.state = ca_disconnected;
 	cls.min_fps = 999999;
@@ -2036,6 +2038,10 @@ void CL_Init (void)
 	Help_Init();
 	M_Init ();
 	EX_FileList_Init();
+
+	//progparms_t parms;
+	//InitProgs(&parms);
+	//InitProgs()
 
 	SList_Init ();
 	SList_Load ();
