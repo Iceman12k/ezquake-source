@@ -108,6 +108,7 @@ byte *ColorForParticle(part_type_t type)
 	return color;
 }
 
+extern cvar_t r_particles_count;
 __inline static void AddParticleEnt(part_type_t type, vec3_t org, int count, float size, float time, col_t col, vec3_t dir, int entity_id)
 {
 	byte *color;

@@ -18,6 +18,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
 #include "quakedef.h"
+#include "ezcsqc.h"
 #include "gl_model.h"
 #include "vx_stuff.h"
 #include "pmove.h"
@@ -1570,6 +1571,59 @@ guess_pm_type:
 	SetupPlayerEntity(num + 1, state);
 }
 
+#ifdef MVD_PEXT1_EZCSQC
+void CL_EZCSQC_ParseEntities(void)
+{
+	ezcsqc_entity_t *ent;
+	unsigned int entnum;
+	qbool removeflag;
+	qbool is_new;
+	int amt = 0;
+
+	ezcsqc.active = true;
+
+	for(;;)
+	{
+		entnum = (unsigned short)MSG_ReadShort();
+		removeflag = !!(entnum & 0x8000);
+		entnum &= ~0x8000;
+
+		if ((!entnum && !removeflag) || msg_badread)
+			break;
+
+		amt++;
+
+		is_new = false;
+		if (removeflag)
+		{	//remove
+			ent = ezcsqc_networkedents[entnum];
+			ezcsqc_networkedents[entnum] = NULL;
+
+			if (!ent)	//wtf, server is gaslighting us or something catastophic happened
+				continue;
+
+			CL_EZCSQC_Ent_Remove(ent);
+			// traditionally we would leave the cleanup to CSQC, but since we're faking all this
+			// we just kinda call one function. any further cleanup behavior can be jammed into that function.
+		}
+		else
+		{
+			ent = ezcsqc_networkedents[entnum];
+			if (ent == NULL)
+			{
+				ent = CL_EZCSQC_Ent_Spawn();
+				ezcsqc_networkedents[entnum] = ent;
+
+				ent->entnum = entnum;
+				is_new = true;
+			}
+
+			CL_EZCSQC_Ent_Update(ent, is_new);
+		}
+	}
+}
+#endif
+
 // Called when the CTF flags are set
 void CL_AddFlagModels (entity_t *ent, int team) 
 {
@@ -2151,6 +2205,7 @@ void CL_EmitEntities (void)
 	}
 
 	CL_UpdateTEnts();
+	CL_EZCSQC_UpdateView();
 }
 
 int	mvd_fixangle;

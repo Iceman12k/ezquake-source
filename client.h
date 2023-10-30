@@ -769,6 +769,10 @@ typedef struct {
 	float map_fog_density;
 	qbool map_fog_enabled;
 	float map_fog_sky;
+
+#ifdef MVD_PEXT1_EZCSQC
+	qbool ezcsqc_active;
+#endif
 } clientState_t;
 
 #define SCORING_SYSTEM_DEFAULT   0
@@ -1073,7 +1077,6 @@ void CL_ParsePacketEntities (qbool delta);
 void CL_SetSolidEntities (void);
 void CL_ParsePlayerinfo (void);
 void CL_StorePausePredictionLocations(void);
-
 
 void MVD_Interpolate(void);
 void CL_ClearPredict(void);

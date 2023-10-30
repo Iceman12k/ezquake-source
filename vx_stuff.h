@@ -141,6 +141,7 @@ extern int ParticleCount, ParticleCountHigh, CoronaCount, CoronaCountHigh;
 
 void ParticleAlphaTrail(centity_t* cent, float size, float life);
 void ParticleNailTrail(centity_t* client_ent, float size, float life);
+void ParticleNailTrail_NoEntity(vec3_t start, vec3_t end, float size, float life);
 
 typedef enum
 {
@@ -156,9 +157,12 @@ void VXTeleport(vec3_t org);
 void VXBlobExplosion(vec3_t org);
 void VXExplosion(vec3_t org);
 void VXBlood(vec3_t org, float count);
-void FuelRodGunTrail(centity_t* cent);
-void FireballTrail(centity_t* cent, byte col[3], float size, float life);
-void FireballTrailWave(centity_t* cent, byte col[3], float size, float life, vec3_t angle);
+void FuelRodGunTrailEntity(centity_t* cent);
+void FuelRodGunTrail(vec3_t start, vec3_t end, vec3_t angles);
+void FireballTrailEntity(centity_t* cent, byte col[3], float size, float life);
+void FireballTrail(vec3_t start, vec3_t end, byte col[3], float size, float life);
+void FireballTrailWaveEntity(centity_t* cent, byte col[3], float size, float life, vec3_t angle);
+void FireballTrailWave(vec3_t start, vec3_t end, byte col[3], float size, float life, vec3_t angle);
 
 void DrawMuzzleflash(vec3_t start, vec3_t angle, vec3_t vel);
 void VXNailhit(vec3_t org, float count);

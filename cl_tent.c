@@ -946,7 +946,7 @@ static void CL_UpdateExplosions(void)
 	}
 }
 
-void CL_UpdateTEnts (void)
+void CL_UpdateTEnts(void)
 {
 	CL_UpdateBeams();
 	CL_UpdateExplosions();

@@ -416,6 +416,7 @@ OBJS_c := \
     cl_slist.o \
     cl_tent.o \
     cl_view.o \
+	cl_ezcsqc.o \
     common_draw.o \
     console.o \
     config_manager.o \
