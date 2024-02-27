@@ -5852,6 +5852,12 @@
       "group-id": "50",
       "type": "boolean"
     },
+    "gl_scaleAlphaTextures": {
+      "default": "0",
+      "desc": "Applies picmip/max_size/miptexlevel to alpha masked textures (fence).",
+      "group-id": "50",
+      "type": "boolean"
+    },
     "gl_shaftlight": {
       "default": "1",
       "desc": "Toggles between darker/fullbright shaft beams.",
@@ -21520,7 +21526,7 @@
       "type": "float"
     },
     "vid_renderer": {
-      "default": "0",
+      "default": "1",
       "desc": "Selects which rendering mode to use.",
       "group-id": "52",
       "remarks": "(variable only available if multiple renderers available)",

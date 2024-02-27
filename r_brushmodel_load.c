@@ -1258,7 +1258,7 @@ static void Mod_LoadLeafs(model_t* loadmodel, lump_t* l, byte* mod_base)
 		first_marksurface = LittleShort(in->firstmarksurface);
 		num_marksurfaces = LittleShort(in->nummarksurfaces);
 
-		if (first_marksurface < 0 || first_marksurface >= loadmodel->nummarksurfaces) {
+		if (first_marksurface < 0 || first_marksurface > loadmodel->nummarksurfaces) {
 			Host_Error("Mod_LoadLeafs: first mark surface invalid (%d vs 0-%d)", first_marksurface, loadmodel->nummarksurfaces);
 		}
 		if (num_marksurfaces < 0 || num_marksurfaces > loadmodel->nummarksurfaces - first_marksurface) {
@@ -1546,6 +1546,7 @@ void R_LoadBrushModelTextures(model_t *m)
 		noscale_flag = 0;
 		noscale_flag = (!gl_scaleModelTextures.value && !m->isworldmodel) ? TEX_NOSCALE : noscale_flag;
 		noscale_flag = (!gl_scaleTurbTextures.value  && Mod_IsTurbTextureName(m, tx->name)) ? TEX_NOSCALE : noscale_flag;
+    noscale_flag = (!gl_scaleAlphaTextures.value  && Mod_IsAlphaTextureName(m, tx->name)) ? TEX_NOSCALE : noscale_flag;
 
 		mipTexLevel  = noscale_flag ? 0 : gl_miptexLevel.value;
 
