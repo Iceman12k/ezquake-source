@@ -205,6 +205,10 @@ typedef struct msurface_s {
 	struct	msurface_s  *drawflatchain;
 
 	mtexinfo_t          *texinfo;
+
+	// decoupled lm
+	float               lmvecs[2][4];
+	float               lmvlen[2];
 	
 	// lighting info
 	int                 dlightframe;
