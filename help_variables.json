@@ -15408,7 +15408,7 @@
       ]
     },
     "r_dynamic": {
-      "default": "1",
+      "default": "2",
       "desc": "Controls dynamic lighting (muzzle-flash, quad & rocket glow, etc) on world surfaces.",
       "group-id": "15",
       "type": "enum",
@@ -16318,7 +16318,8 @@
     },
     "r_skyname": {
       "default": "",
-      "desc": "If you wan't to use skybox name snow type r_skyname snow, disable skybox with r_skyname \"\"",
+      "desc": "Allows the sky to be rendered using an external skybox, rather than using textures from the map",
+      "comments": "Specifying a value will disable loading of skyboxes specified by the map.\nSkyboxes should be placed in 'env' or 'gfx/env' folders",
       "group-id": "51",
       "type": "string"
     },

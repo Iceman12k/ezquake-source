@@ -518,6 +518,10 @@ static void Mod_LoadTextures(model_t* mod, lump_t *l, byte* mod_base)
 		if (tx->width < 0 || tx->height < 0) {
 			Host_Error("Texture %s negative dimensions: %dx%d", tx->name, tx->width, tx->height);
 		}
+		if (tx->width == 0 || tx->height == 0) {
+			Con_Printf("Warning: Skipping zero size texture %s in %s\n", tx->name, mod->name);
+			continue;
+		}
 		if (tx->width > INT_MAX / tx->height / 3) {
 			Host_Error("Texture %s excessive size: %dx%d", tx->name, tx->width, tx->height);
 		}
@@ -823,7 +827,8 @@ static void Mod_LoadPlanes(model_t* model, lump_t* l, byte* mod_base)
 
 static void Mod_LoadMarksurfacesBSP2(model_t* loadmodel, lump_t* l, byte* mod_base)
 {
-	int i, j, count;
+	int i, count;
+	unsigned int j;
 	int *in;
 	msurface_t **out;
 	int max_surfaces = (INT_MAX / sizeof(*out));
@@ -843,7 +848,8 @@ static void Mod_LoadMarksurfacesBSP2(model_t* loadmodel, lump_t* l, byte* mod_ba
 	loadmodel->nummarksurfaces = count;
 
 	for (i = 0; i < count; i++) {
-		j = LittleLong(in[i]);
+		// Surface indices are unsigned
+		j = (unsigned int) LittleLong(in[i]);
 		if (j >= loadmodel->numsurfaces) {
 			Host_Error("Mod_LoadMarksurfaces: bad surface number");
 		}
@@ -853,7 +859,8 @@ static void Mod_LoadMarksurfacesBSP2(model_t* loadmodel, lump_t* l, byte* mod_ba
 
 static void Mod_LoadMarksurfaces(model_t* loadmodel, lump_t* l, byte* mod_base)
 {
-	int i, j, count;
+	int i, count;
+	unsigned short j;
 	short *in;
 	msurface_t **out;
 	int max_surfaces = (INT_MAX / sizeof(*out));
@@ -873,7 +880,8 @@ static void Mod_LoadMarksurfaces(model_t* loadmodel, lump_t* l, byte* mod_base)
 	loadmodel->nummarksurfaces = count;
 
 	for (i = 0; i < count; i++) {
-		j = LittleShort(in[i]);
+		// Surface indices are unsigned
+		j = (unsigned short) LittleShort(in[i]);
 		if (j >= loadmodel->numsurfaces) {
 			Host_Error("Mod_LoadMarksurfaces: bad surface number");
 		}
