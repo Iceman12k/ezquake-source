@@ -173,7 +173,7 @@ static void R_AddDynamicLights(msurface_t *surf)
 		irad = light->rad;
 		iminlight = light->minlight;
 
-		for (t = 0, _td = light->local[1]; t < tmax; t++, _td -= 16) {
+		for (t = 0, _td = light->local[1]; t < tmax; t++, _td -= (1 << surf->lmshift)) {
 			td = _td < 0 ? -_td : _td;
 			td *= surf->lmvlen[1];
 

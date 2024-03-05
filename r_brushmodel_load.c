@@ -226,9 +226,6 @@ static void Mod_LoadLighting(model_t* loadmodel, lump_t* l, byte* mod_base, bspx
 	qbool load_inline;
 
 	loadmodel->lightdata = NULL;
-	if (l->filelen <= 0 || l->filelen >= INT_MAX / 3) {
-		return;
-	}
 
 	if (loadmodel->bspversion == HL_BSPVERSION && l->filelen > 0) {
 		loadmodel->lightdata = (byte *) Hunk_AllocName(l->filelen, loadmodel->name);
