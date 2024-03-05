@@ -193,6 +193,8 @@ typedef struct msurface_s {
 	short               texturemins[2];
 	short               extents[2];
 
+	short               lmshift;
+
 	// gl lightmap coordinates
 	int                 light_s;
 	int                 light_t;
@@ -628,5 +630,7 @@ extern mplane_t frustum[4];
 
 // sky
 #define BACKFACE_EPSILON	0.01
+
+#define DEFAULT_LMSHIFT   4
 
 #endif	// __MODEL__
