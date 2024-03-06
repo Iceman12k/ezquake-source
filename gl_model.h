@@ -193,6 +193,8 @@ typedef struct msurface_s {
 	short               texturemins[2];
 	short               extents[2];
 
+	short               lmshift;
+
 	// gl lightmap coordinates
 	int                 light_s;
 	int                 light_t;
@@ -203,6 +205,10 @@ typedef struct msurface_s {
 	struct	msurface_s  *drawflatchain;
 
 	mtexinfo_t          *texinfo;
+
+	// decoupled lm
+	float               lmvecs[2][4];
+	float               lmvlen[2];
 	
 	// lighting info
 	int                 dlightframe;
@@ -468,6 +474,17 @@ typedef enum
 #define MAX_SIMPLE_TEXTURES 5
 #define MAX_TEXTURE_ARRAYS_PER_MODEL 64
 
+typedef struct worldspawn_info_s {
+	char skybox_name[MAX_QPATH];
+	float fog_density;
+	vec3_t fog_color;
+
+	float wateralpha;
+	float lavaalpha;
+	float telealpha;
+	float slimealpha;
+} worldspawn_info_t;
+
 typedef struct model_s {
 	char				name[MAX_QPATH];
 	qbool				needload; // bmodels and sprites don't cache normally
@@ -628,5 +645,7 @@ extern mplane_t frustum[4];
 
 // sky
 #define BACKFACE_EPSILON	0.01
+
+#define DEFAULT_LMSHIFT   4
 
 #endif	// __MODEL__
