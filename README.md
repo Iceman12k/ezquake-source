@@ -15,16 +15,16 @@ gameplay.
 
 ## Features
 
- * Modern graphics
- * [QuakeTV][qtv] support
- * Rich menus
- * Multiview support
- * Tons of features to serve latest pro-gaming needs
- * Built in server browser & MP3 player control
- * Recorded games browser
- * Customization of all possible graphics elements of the game including Heads Up Display
- * All sorts of scripting possibilities
- * Windows, Linux, MacOSX and FreeBSD platforms supported (SDL2).
+* Modern graphics
+* [QuakeTV][qtv] support
+* Rich menus
+* Multiview support
+* Tons of features to serve latest pro-gaming needs
+* Built in server browser & MP3 player control
+* Recorded games browser
+* Customization of all possible graphics elements of the game including Heads Up Display
+* All sorts of scripting possibilities
+* Windows, Linux, MacOSX and FreeBSD platforms supported (SDL2).
 
 Our client comes only with bare minimum of game media. If you want to
 experience ezQuake with modern graphics and other additional media including
@@ -85,7 +85,7 @@ sudo apt-get install -y git mingw-w64 build-essential libspeexdsp-dev dos2unix p
 Now clone the ezQuake source code:
 
 ```
-git clone https://github.com/ezQuake/ezquake-source.git ezquake
+git clone https://github.com/Iceman12k/ezquake-source.git ezquake
 ```
 
 Make sure line endings are not CRLF:
@@ -136,7 +136,7 @@ sudo zypper install git pcre-devel Mesa-libGL-devel libSDL2-devel libjansson-dev
 
 Clone the git repository:
 ```
-git clone https://github.com/ezQuake/ezquake-source.git
+git clone https://github.com/Iceman12k/ezquake-source.git
 ```
 
 Switch to `ezquake-source` path:
@@ -191,13 +191,13 @@ There will also be an `ezquake.zip` which basically just zips up the .app.
 
 Nightly builds for Windows can be found [here][nightly]
 
- [nQuake]: http://nquake.com/
- [webchat]: http://webchat.quakenet.org/?channels=#ezquake
- [IRC]: irc://irc.quakenet.org/#ezquake
- [forum]: http://www.quakeworld.nu/forum/8
- [qtv]: http://qtv.quakeworld.nu/
- [nightly]: http://uttergrottan.localghost.net/ezquake/dev/nightlybuilds/win32/
- [releases]: https://github.com/ezQuake/ezquake-source/releases
- [issues]: https://github.com/ezQuake/ezquake-source/issues
- [homepage]: https://ezquake.github.io/
- [discord]: http://discord.quake.world/
+[nQuake]: http://nquake.com/
+[webchat]: http://webchat.quakenet.org/?channels=#ezquake
+[IRC]: irc://irc.quakenet.org/#ezquake
+[forum]: http://www.quakeworld.nu/forum/8
+[qtv]: http://qtv.quakeworld.nu/
+[nightly]: http://uttergrottan.localghost.net/ezquake/dev/nightlybuilds/win32/
+[releases]: https://github.com/ezQuake/ezquake-source/releases
+[issues]: https://github.com/ezQuake/ezquake-source/issues
+[homepage]: https://ezquake.github.io/
+[discord]: http://discord.quake.world/
